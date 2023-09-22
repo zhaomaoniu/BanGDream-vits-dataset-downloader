@@ -28,7 +28,7 @@
 5. 程序运行结束后，将会输出以下信息："Please delete these files: "。请按照提示删除输出的文件，因为它们是损坏的。如果输出为空，表示无需删除任何文件。
 6. 如果一切正确，您将在项目文件夹下看到一个新的名为`voice`的文件夹。该文件夹中有一个以角色ID为名称的子文件夹，其中包含以语音内容命名的多个MP3文件。
 7. 进入该子文件夹，手动删除一些您认为对模型训练不利的文件。
-8. 然后，打开`create_dataset.py`文件，编辑第6到16行的参数，并保存文件。
+8. 然后，打开`create_dataset.py`文件，编辑第6到8行的参数，并保存文件。（如果您希望训练其他类型的模型，可以尝试修改第10到19行的参数）
 9. 运行以下命令：
 
    ```
@@ -39,6 +39,8 @@
 
 ## 感谢
 
-- [Bestdori](https://bestdori.com/) 提供数据
-- [ChatGPT](https://chat.openai.com/) 提供代码辅助
-- [BingAI](https://bing.com) 提供代码辅助
+- MyGO!!!!!: 驱使我继续完善这个项目
+- WindowsSov8: 提供乐队故事章节数获取的方法
+- [Bestdori](https://bestdori.com/): 提供数据
+- [ChatGPT](https://chat.openai.com/): 提供代码辅助
+- [BingAI](https://bing.com): 提供代码辅助

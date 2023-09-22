@@ -3,11 +3,14 @@ import random
 import subprocess
 
 # 设置相关路径和参数
-input_dir = "voice/1/"
+character_id = 40
+character_name = "taki"
+speaker_id = 4
+
+input_dir = f"voice/{character_id}/"
 output_dir = "dataset/"
-train_file = "train.txt"
-val_file = "val.txt"
-speaker_id = 2
+train_file = f"{character_id}_train.txt"
+val_file = f"{character_id}_val.txt"
 sample_rate = 22050
 bit_depth = 16
 channels = 1
@@ -27,10 +30,10 @@ transcript_dict = {}
 # 将所有mp3文件处理为wav文件
 for idx, file in enumerate(mp3_files):
     mp3_path = os.path.join(input_dir, file)
-    wav_filename = str(idx) + ".wav"
+    wav_filename = f"{character_name}_{idx}.wav"
     wav_path = os.path.join(output_dir, wav_filename)
 
-    transcript_dict[file[:-4]] = str(idx)
+    transcript_dict[file[:-4]] = f"{character_name}_{idx}"
 
     if not os.path.exists(wav_path):
         # 使用ffmpeg将mp3文件转换为wav文件
@@ -77,7 +80,10 @@ with open(train_file, "w", encoding="UTF-8") as train_txt:
 
         # 根据时长限制过滤掉不符合要求的音频文件
         if duration >= min_duration and duration <= max_duration:
-            train_txt.write(f"{wav_path}|{speaker_id}|{transcript}\n")
+            if speaker_id is not None:
+                train_txt.write(f"{wav_path}|{speaker_id}|{transcript}\n")
+            else:
+                train_txt.write(f"{wav_path}|{transcript}\n")
 
 # 选择另一部分文件作为验证样本
 val_files = list(set(mp3_files) - set(train_files))
@@ -106,7 +112,11 @@ with open(val_file, "w", encoding="UTF-8") as val_txt:
 
         # 根据时长限制过滤掉不符合要求的音频文件
         if duration >= min_duration and duration <= max_duration:
-            val_txt.write(f"{wav_path}|{speaker_id}|{transcript}\n")
+            if speaker_id is not None:
+                val_txt.write(f"{wav_path}|{speaker_id}|{transcript}\n")
+            else:
+                val_txt.write(f"{wav_path}|{transcript}\n")
+
 
 # 输出处理完成的消息
 print("数据集创建成功！")

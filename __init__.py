@@ -1,6 +1,6 @@
 from utils import EventStoryDownload, VoiceDownload, get_broken_mp3_file
 
-character_id = 1
+character_id = 900000
 replace_tuples = [
     ("戸山", "とやま"),
     ("香澄", "かすみ"),
@@ -54,6 +54,15 @@ replace_tuples = [
     ("七深", "ななみ"),
     ("八潮", "やしお"),
     ("瑠唯", "るい"),
+    ("高松", "たかまつ"),
+    ("燈", "ともり"),
+    ("千早", "ちはや"),
+    ("愛音", "あのん"),
+    ("要", "かなめ"),
+    ("楽奈", "らな"),
+    ("長崎", "ながさき"),
+    ("椎名", "しいな"),
+    ("立希", "たき"),
     ("\n", ""),
     (" ", ""),
     ("　", "")
@@ -64,9 +73,10 @@ voice_downloader = VoiceDownload(character_id, replace_tuples)
 
 print("Started to download event stories\n\n")
 
-event_story.run()
+# event_story.run()
 
-print(f"\n\nFinished downloading event stories, started to download voices of {character_id}\n\n")
+print(f"\n\nFinished downloading event stories, started to download voices of character {character_id}\n\n")
+
 
 voice_downloader.run()
 
